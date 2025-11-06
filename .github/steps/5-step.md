@@ -1,42 +1,35 @@
-<!--
-  <<< Author notes: Step 5 >>>
-  Start this step by acknowledging the previous step.
-  Define terms and link to docs.github.com.
--->
+## Step 5: Create Workflow & Consume Output
 
-## Step 5: Add your action to the workflow file
+### 📖 Theory
 
-_Great job! :tada:_
+Use a workflow triggered by `issue_comment` to run the local action and then post the retrieved joke as a comment.
 
-All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
+### ⌨️ Activity: Author Workflow
 
-### :keyboard: Activity 1: Edit the custom action at the bottom of the workflow file.
+1. Create `.github/workflows/joke-action.yml`.
 
-```yaml
-- name: ha-ha
-  uses: ./.github/actions/joke-action
-```
+   ```yaml
+   name: Joke Action
+   on:
+     issue_comment:
+       types: [created]
+   jobs:
+     joke:
+       if: startsWith(github.event.comment.body, '/joke')
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v5
+         - name: Get Joke
+           id: get-joke
+           uses: ./
+         - name: Create comment
+           uses: peter-evans/create-or-update-comment@v5
+           with:
+            issue-number: ${{ github.event.issue.number }}
+            body: ${{ steps.get-joke.outputs.joke }}
+            
+   ```
 
-Here is what the full file should look like (we’re using issues instead of the pull request event and removing the reference to the hello world action.)
+   The workflow will run on every issue comment created event. If the comment starts with `/joke`, it will execute the Dad Jokes action and post the joke as a comment in the same issue.
 
-```yaml
-name: JS Actions
-
-on:
-  issues:
-    types: [labeled]
-
-jobs:
-  action:
-    if: ${{ !github.event.repository.is_template }}
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: ha-ha
-        uses: ./.github/actions/joke-action
-```
-
-You can make these changes in your repository by opening [`my-workflow.yml`](/.github/workflows/my-workflow.yml) in another browser tab and [editing the file directly](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files). Make sure to select the `Commit directly to the main branch` option.
-
-Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
+1. Commit and push the workflow file to the `main`:

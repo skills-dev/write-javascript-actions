@@ -1,42 +1,110 @@
-<!--
-  <<< Author notes: Step 2 >>>
-  Start this step by acknowledging the previous step.
-  Define terms and link to docs.github.com.
--->
+## Step 2: Create Source Files & Run Locally
 
-## Step 2: Configure Your Action
+### 📖 Theory
 
-_Let's keep going! :bike:_
+Author the action’s core logic and verify it runs locally before bundling.
 
-### Excellent!
+### ⌨️ Activity: Implement the Dad Jokes Action
 
-Now that we have the custom action pre-requisites, let us create **joke-action** action.
+Now that your project is initialized and dependencies are installed, it's time to create the source files for your Dad Jokes GitHub Action.
 
-### :keyboard: Activity 1: Configure Your Action
 
-All of the following steps take place inside of the `.github/actions/joke-action` directory.
+1. Create `src/` directory to hold your GitHub Action JavaScript files:
 
-We will start with using the parameters that are **required** and later implement some optional parameters as our action evolves.
-
-1. Create a new file in: `.github/actions/joke-action/action.yml`
-2. Add the following contents to the `.github/actions/joke-action/action.yml` file:
-
-   ```yaml
-   name: "my joke action"
-
-   description: "use an external API to retrieve and display a joke"
-
-   runs:
-     using: "node16"
-     main: "main.js"
+   ```sh
+   mkdir src
    ```
 
-3. Save the `action.yml` file
-4. Commit the changes and push them to the `main` branch:
-   ```shell
-   git add action.yml
-   git commit -m 'create action.yml'
-   git pull
+1. Create `src/joke.js` file to hold the logic for fetching a joke from the `icanhazdadjoke.com` API:
+
+   ```js
+   const request = require("request-promise");
+
+   const options = {
+     method: "GET",
+     uri: "https://icanhazdadjoke.com/",
+     headers: {
+       Accept: "application/json",
+       "User-Agent": "Writing JavaScript action GitHub Skills exercise.",
+     },
+     json: true,
+   };
+
+   async function getJoke() {
+     const res = await request(options);
+     return res.joke;
+   }
+
+   module.exports = getJoke;
+   ```
+
+1. Create `src/main.js` that will be the main entry point for your action:
+
+    ```js
+    const getJoke = require("./joke");
+    const core = require("@actions/core");
+
+    async function run() {
+      const joke = await getJoke();
+      console.log(joke);
+      core.setOutput("joke-output", joke);
+    }
+
+    run();
+    ```
+
+1. Run the action locally to verify it works:
+
+   ```sh
+   node src/main.js
+   ```
+
+   <!-- TODO: Add screenshot example -->
+
+1. Commit and push:
+
+   ```sh
+   git add src/
+   git commit -m "Add Dad Joke action source files"
    git push
    ```
-5. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
+
+### 🛠 Activity (Optional): Debug your action
+
+>[!NOTE]
+> This activity is optional and not required to complete the exercise.
+>
+> Learning how to debug your action code can be very helpful!
+
+<details>
+<summary>Show steps</summary><br/>
+
+1. Install dev dependency:
+
+   ```sh
+   npm install -D @github/local-action
+   ```
+
+1. Create `.vscode/launch.json`:
+
+   ```json
+   {
+     "version": "0.2.0",
+     "configurations": [
+       {
+         "name": "Debug Action",
+         "type": "node",
+         "request": "launch",
+         "runtimeExecutable": "npx",
+         "cwd": "${workspaceRoot}",
+         "args": ["@github/local-action", ".", "src/main.js"],
+         "console": "integratedTerminal",
+         "skipFiles": ["<node_internals>/**", "node_modules/**"]
+       }
+     ]
+   }
+   ```
+
+1. Set breakpoints in `src/main.js` and start the "Debug Action" configuration.
+
+</details>

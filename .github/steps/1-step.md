@@ -1,85 +1,81 @@
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+## Step 1: Initializing the Dad Jokes GitHub Action
 
-## Step 1: Initialize a new JavaScript project
+Imagine you have a repetitive task that you want to automate. You've searched through the [**GitHub Marketplace**](https://github.com/marketplace?type=actions) to see if there are any existing actions that suit your needs, but found nothing - because your task is very specific: **generating DAD JOKES**! 🎭
 
-_Welcome to the course :tada:_
+Since no pre-built action exists for your quirky automation needs, it's time to roll up your sleeves and create your own
 
-### Configuring a workflow
+### ⌨️ Activity: Set up your development environment
 
-Actions are enabled on your repository by default, but we still have to tell our repository to use them. We do this by creating a workflow file in our repository.
+Let's use **GitHub Codespaces** to set up a cloud-based development environment and work in it for the remainder of the exercise!
 
-A **workflow** file can be thought of as the recipe for automating a task. They house the start to finish instructions, in the form of `jobs` and `steps`, for what should happen based on specific triggers.
+1. Right-click the below button to open the **Create Codespace** page in a new tab. Use the default configuration.
 
-Your repository can contain multiple **workflow** files that carry out a wide variety of tasks. It is important to consider this when deciding on a name for your **workflow**. The name you choose should reflect the tasks being performed.
+   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/{{full_repo_name}}?quickstart=1)
 
-_In our case, we will use this one **workflow** file for many things, which leads us to break this convention for teaching purposes._
+1. Confirm the **Repository** field is your copy of the exercise, not the original, then click the green **Create Codespace** button.
 
-Read more about [workflows](https://docs.github.com/en/actions/writing-workflows/about-workflows)
+   - ✅ Your copy: `/{{full_repo_name}}`
+   - ❌ Original: `/skills-dev/write-javascript-actions`
 
-## On to your development environment
+1. Wait a moment for Visual Studio Code to load in your browser.
 
-Our JavaScript actions are going to leverage the [GitHub ToolKit](https://github.com/actions/toolkit) for developing GitHub Actions.
+1. Verify that **Node.js** is available by opening a terminal and running:
 
-This is an external library that we will install using `npm` which means that you will need [Node.js](https://nodejs.org/) installed.
-
-We find writing actions to be easier from a local environment vs trying to do everything right here in the repository. Doing these steps locally allows you to use the editor of your choice so that you have all the extensions and snippets you are used to when writing code.
-
-If you do not have a preferred environment then we suggest following along exactly as you see on the screen, which means you'll need to install [Visual Studio Code](https://code.visualstudio.com/).
-
-## Don't forget to set up your workstation
-
-Most of your work going forward will take place away from your Skills repository, so before continuing with the course ensure you have the following installed on your **local machine**.
-
-1. [ ] [Node.js](https://nodejs.org)
-2. [ ] [Visual Studio Code](https://code.visualstudio.com/) or your editor of choice
-3. [ ] [Git](https://git-scm.com/)
-
-### :keyboard: Activity 1: Initialize a new JavaScript project
-
-Once you have the necessary tools installed locally, follow these steps to begin creating your first action.
-
-1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine
-2. Clone your Skills repo to your local machine:
-   ```shell
-   git clone <this repository URL>.git
+   ```sh
+   node --version
+   npm --version
    ```
-3. Navigate to the folder you just cloned:
-   ```shell
-   cd <local folder with cloned repo>
-   ```
-4. We are using branch called `main`.
-   ```shell
-   git switch main
-   ```
-5. Create a new folder for our actions files:
-   ```shell
-   mkdir -p .github/actions/joke-action
-   ```
-6. Navigate to the `joke-action` folder you just created:
-   ```shell
-   cd .github/actions/joke-action
-   ```
-7. Initialize a new project:
-   ```shell
+
+   <details>
+   <summary>Having trouble? 🤷</summary><br/>
+
+   - Make sure you selected your personal copy of the repository, not the original template.
+   - If the Codespace fails to start, try refreshing the page and creating a new one.
+   - Node.js and npm should be pre-installed in the development environment.
+
+   </details>
+
+### ⌨️ Activity: Initialize Project
+
+Now that your Codespace is ready, let's initialize a new Node.js project and install the dependencies needed for your Dad Jokes action.
+
+1. Within your GitHub Codespace terminal window initialize a new project:
+
+   ```sh
    npm init -y
    ```
-8. Install the **request**, **request-promise** and **@actions/core** dependencies using `npm` from the [GitHub ToolKit](https://github.com/actions/toolkit):
-   ```shell
-   npm install --save request request-promise @actions/core
+
+1. Install the required dependencies:
+
+   ```sh
+   npm install request request-promise @actions/core @vercel/ncc
    ```
-9. Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
-   ```shell
+
+1. Review `package.json` to confirm dependencies are listed in the `dependencies` section.
+
+1. Open the `.gitignore` file and add an entry to exclude the `node_modules` directory from being tracked by git:
+
+   ```text
+   node_modules/
+   ```
+
+   We don't want to commit `node_modules` because it contains thousands of files that would bloat the repository. 
+
+   > 🪧 **Note:** Instead, later in the exercise you will bundle your action into a single JavaScript file with all dependencies included.
+
+1. Commit and push your changes:
+
+   ```sh
+   git status
    git add .
-   git commit -m 'add project dependencies'
+   git commit -m "Initialize project"
+   git push
    ```
-10. Push your changes to your repository:
-    ```shell
-    git push
-    ```
-11. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
+
+<details>
+<summary>Having trouble? 🤷</summary><br/>
+
+- Ensure you are at the repository root before running `npm init -y`.
+- Do not commit `node_modules/` to the repository; ensure it's listed in `.gitignore`.
+
+</details>
