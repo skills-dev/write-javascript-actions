@@ -75,13 +75,21 @@ jobs:
           text-file: package.json
           keyphrase: "@actions/core"
 
-      - name: Check for @actions/github dependency
-        id: check-github-dep
+      - name: Check for request dependency
+        id: check-request-dep
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
           text-file: package.json
-          keyphrase: "@actions/github"
+          keyphrase: "request"
+
+      - name: Check for request-promise dependency
+        id: check-request-promise-dep
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: package.json
+          keyphrase: "request-promise"
 
       - name: Check for @vercel/ncc dependency
         id: check-ncc-dep
@@ -129,8 +137,10 @@ jobs:
                 passed: ${{ steps.check-package-json.outcome == 'success' }}
               - description: "@actions/core dependency present"
                 passed: ${{ steps.check-core-dep.outcome == 'success' }}
-              - description: "@actions/github dependency present"
-                passed: ${{ steps.check-github-dep.outcome == 'success' }}
+              - description: "request dependency present"
+                passed: ${{ steps.check-request-dep.outcome == 'success' }}
+              - description: "request-promise dependency present"
+                passed: ${{ steps.check-request-promise-dep.outcome == 'success' }}
               - description: "@vercel/ncc dependency present"
                 passed: ${{ steps.check-ncc-dep.outcome == 'success' }}
               - description: ".gitignore excludes node_modules/"

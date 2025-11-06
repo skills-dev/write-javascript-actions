@@ -36,6 +36,5 @@
 ehthumbs.db
 Thumbs.db
 
-# Node modules #
+# Add Node modules below #
 ################
-node_modules/

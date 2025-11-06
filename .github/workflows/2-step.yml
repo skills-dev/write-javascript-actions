@@ -85,9 +85,9 @@ jobs:
           vars: |
             step_number: 2
             results_table:
-              - description: "src/main.js exists"
+              - description: "Checked for src/main.js file"
                 passed: ${{ steps.check-main-js.outcome == 'success' }}
-              - description: "src/joke.js exists"
+              - description: "Checked for src/joke.js file"
                 passed: ${{ steps.check-joke-js.outcome == 'success' }}
 
       # END: Check practical exercise

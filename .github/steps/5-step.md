@@ -6,13 +6,24 @@ Use a workflow triggered by `issue_comment` to run the local action and then pos
 
 ### ⌨️ Activity: Author Workflow
 
-1. Create `.github/workflows/joke-action.yml`.
+1. Create a new GitHub Actions workflow file with the following name
+
+   ```txt
+   .github/workflows/joke-action.yml
+   ```
+
+1. Add the following contents to the workflow file:
 
    ```yaml
    name: Joke Action
    on:
      issue_comment:
        types: [created]
+
+  permissions:
+    issues: write
+    contents: read
+  
    jobs:
      joke:
        if: startsWith(github.event.comment.body, '/joke')
@@ -25,9 +36,8 @@ Use a workflow triggered by `issue_comment` to run the local action and then pos
          - name: Create comment
            uses: peter-evans/create-or-update-comment@v5
            with:
-            issue-number: ${{ github.event.issue.number }}
-            body: ${{ steps.get-joke.outputs.joke }}
-            
+            issue-number: {% raw %}${{ github.event.issue.number }}{% endraw %}
+            body: {% raw %}${{ steps.get-joke.outputs.joke }}{% endraw %}
    ```
 
    The workflow will run on every issue comment created event. If the comment starts with `/joke`, it will execute the Dad Jokes action and post the joke as a comment in the same issue.
