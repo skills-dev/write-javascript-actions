@@ -6,12 +6,12 @@ _Write your own GitHub JavaScript Action and automate customized tasks unique to
 
 - **Who is this for**: Developers, GitHub users, users new to Git, students, managers, and for teams.
 - **What you'll learn**: How to create custom JavaScript-based GitHub Actions, bundle them for distribution, and use them in workflows.
-- **What you'll build**: A Dad Jokes GitHub Action that fetches random jokes and responds to issue comments.
+- **What you'll build**: A Javascript based GitHub Action that fetches random dad jokes and exposes them as an output.
 - **Prerequisites**:
 
   - You should be familiar with GitHub and GitHub Actions. We recommend taking the [Hello GitHub Actions](https://github.com/skills-dev/hello-github-actions) exercise first.
 
-- **How long**: This exercise takes about 1 hour to complete.
+- **How long**: This exercise takes less than 1 hour to complete.
 
 In this exercise, you will:
 
