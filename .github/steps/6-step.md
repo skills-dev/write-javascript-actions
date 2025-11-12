@@ -1,9 +1,30 @@
 ## Step 6: Trigger & Validate
 
+Awesome! :rocket: You've created the Dad Jokes GitHub Action, defined its metadata, and authored a workflow to use it.
 
+The only thing left to do is test it out!
 
-### ⌨️ Activity: Try out your action!
+### ⌨️ Activity: Try out your action
 
-1. Create a comment in this issue (or create a new one) with the text `/joke` 
-1. Monitor the `actions` tab for the "Joke Action" workflow run to complete.
-1. After it completes you should see a new comment posted by the bot with the dad joke!
+1. Create a comment in this issue (or create a new one) with the text `/joke`
+
+1. Monitor the **Actions** tab for the "Joke Action" workflow run to complete:
+   - Click on the **Actions** tab in your repository
+   - Look for a new workflow run titled "Joke Action"
+   - The run should show a green checkmark when completed successfully
+
+1. Return to the issue and you should see a new comment posted by `github-actions[bot]` containing a random dad joke!
+
+1. Mona will post the review of the exercise once the workflow completes **successfully**! 
+
+   <details>
+   <summary>Having trouble? 🤷</summary><br/>
+
+   If the workflow doesn't trigger or fails:
+   - Make sure your comment starts exactly with `/joke`
+   - Check the Actions tab for error messages
+   - Verify that your `dist/index.js` file exists and was committed
+   - If you did any updates to your source code, ensure you re-bundled with `npm run build` and pushed the changes
+   - Ensure your `action.yml` file is correctly formatted
+
+   </details>
