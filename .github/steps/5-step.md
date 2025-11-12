@@ -42,7 +42,9 @@ Let's see your Dad Jokes action in action by creating a GitHub Actions workflow 
             body: {% raw %}${{ steps.get-joke.outputs.joke }}{% endraw %}
    ```
 
-   This workflow triggers when someone comments `/joke` on an issue and responds with a joke!
+   This workflow triggers for all new issue comments in the repository.
+
+   Because of the `if` conditional, the `joke` job only runs if the comment starts with `/joke`.
 
 1. Commit and push the workflow file to the `main` branch:
 

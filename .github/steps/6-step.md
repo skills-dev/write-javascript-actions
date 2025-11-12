@@ -6,7 +6,7 @@ The only thing left to do is test it out!
 
 ### ⌨️ Activity: Try out your action
 
-1. Create a comment in this issue (or create a new one) with the text `/joke`
+1. Create a comment in this issue (or create a new issue) with the text `/joke`
 
 1. Monitor the **Actions** tab for the "Joke Action" workflow run to complete:
    - Click on the **Actions** tab in your repository

@@ -10,7 +10,6 @@ When someone uses your action in their workflow, GitHub downloads and executes i
 
 Rather than committing your `node_modules` directory (which causes problems with repository size and performance), you can use bundling tools like `@vercel/ncc` to combine your code and dependencies into a single `dist/index.js` file for distribution.
 
-
 ### ⌨️ Activity: Build Setup & Bundle
 
 1. Add a build script to `package.json` (inside the existing scripts block or create one):

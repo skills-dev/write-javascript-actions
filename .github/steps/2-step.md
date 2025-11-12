@@ -14,13 +14,9 @@ The `@actions/core` library is the main library from the [GitHub Actions Toolkit
 
 ### ⌨️ Activity: Implement the Dad Jokes Action
 
-Now that your project is initialized and dependencies are installed, it's time to create the source files for your Dad Jokes GitHub Action.
+Let's create the source files and implement the logic for your action.
 
-1. Create `src/` directory to hold your GitHub Action JavaScript files:
-
-   ```sh
-   mkdir src
-   ```
+1. Create `src/` directory to hold your JavaScript files:
 
 1. Create `src/joke.js` file to hold the logic for fetching a joke from the `icanhazdadjoke.com` API:
 
@@ -64,15 +60,13 @@ Now that your project is initialized and dependencies are installed, it's time t
    run();
    ```
 
-   We call the `getJoke` function and call the `core.setOutput()` method to set the `joke` output of your GitHub Action.
+   We call the `getJoke` function and follow up with `core.setOutput()` to set the `joke` output of your GitHub Action.
 
 1. Run the action locally to verify it works:
 
    ```sh
    node src/main.js
    ```
-
-  <!-- TODO: ADD SCREENSHOT -->
 
 1. Commit and push:
 
