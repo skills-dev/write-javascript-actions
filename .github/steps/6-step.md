@@ -8,10 +8,10 @@ The only thing left to do is test it out!
 
 1. Create a comment in this issue (or create a new issue) with the text `/joke`
 
-1. Monitor the **Actions** tab for the "Joke Action" workflow run to complete:
-   - Click on the **Actions** tab in your repository
-   - Look for a new workflow run titled "Joke Action"
-   - The run should show a green checkmark when completed successfully
+1. Monitor the **Actions** tab for the `Joke Action` workflow to complete:
+
+   <img width="400" alt="SCR-20251113-kntg" src="https://github.com/user-attachments/assets/992da295-0123-4688-a068-d289967f2455" />
+
 
 1. Return to the issue and you should see a new comment posted by `github-actions[bot]` containing a random dad joke!
 
