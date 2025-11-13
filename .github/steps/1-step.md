@@ -57,9 +57,11 @@ Now that your Codespace is ready, let's initialize a new Node.js project and ins
    npm install request request-promise @actions/core @vercel/ncc
    ```
 
+   > 🪧 **Note:** You will learn each library purpose in the next steps
+
 1. Review `package.json` to confirm dependencies are listed in the `dependencies` section.
 
-1. Open the `.gitignore` file and add an entry to exclude the `node_modules` directory from being tracked by git:
+1. Open the `.gitignore` file and add an entry to exclude the `node_modules` directory from being tracked by Git:
 
    ```text
    node_modules/
@@ -77,6 +79,8 @@ Now that your Codespace is ready, let's initialize a new Node.js project and ins
    git commit -m "Initialize project"
    git push
    ```
+
+1. With the changes pushed to GitHub, Mona will check your work and share the next steps.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>

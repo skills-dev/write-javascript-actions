@@ -12,10 +12,11 @@ Rather than committing your `node_modules` directory (which causes problems with
 
 ### ⌨️ Activity: Build Setup & Bundle
 
-1. Add a build script to `package.json` (inside the existing scripts block or create one):
+1. Add a new `build` script to `package.json` (inside the existing `scripts` object):
 
    ```json
    "scripts": {
+      // Existing scripts...
      "build": "ncc build src/main.js -o dist"
    }
    ```
@@ -39,3 +40,4 @@ Rather than committing your `node_modules` directory (which causes problems with
    git commit -m "Add ncc build script and bundled dist/index.js"
    git push
    ```
+1. With the changes pushed to GitHub, Mona will check your work and share the next steps.

@@ -75,3 +75,5 @@ Let's create the source files and implement the logic for your action.
    git commit -m "Add Dad Joke action source files"
    git push
    ```
+
+1. With the changes pushed to GitHub, Mona will check your work and share the next steps.
