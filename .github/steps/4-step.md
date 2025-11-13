@@ -22,11 +22,11 @@ The metadata file has specific requirements:
 | ----------------- | -------------------------------------------------------------- | :------: |
 | **`name`**        | The name of your action.                                       |    ✅    |
 | **`description`** | A short description of what your action does.                  |    ✅    |
-| **`author`**      | The name of the action's author.                               |    ❌    |
-| **`inputs`**      | Data that the action expects to receive.                       |    ❌    |
-| **`outputs`**     | Data that other actions can use after this action runs.        |    ❌    |
+| **`author`**      | The name of the action's author.                               |    ○     |
+| **`inputs`**      | Data that the action expects to receive.                       |    ○     |
+| **`outputs`**     | Data that downstream steps in the workflow can use             |    ○     |
 | **`runs`**        | Tells GitHub how to execute your action.                       |    ✅    |
-| **`branding`**    | Optional color and icon for your action in GitHub Marketplace. |    ❌    |
+| **`branding`**    | Color and icon for your action in GitHub Marketplace.          |    ○     |
 
 #### JavaScript Action `runs` Configuration
 

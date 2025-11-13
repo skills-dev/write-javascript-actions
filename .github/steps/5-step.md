@@ -18,6 +18,8 @@ Let's see your Dad Jokes action in action by creating a GitHub Actions workflow 
 
    ```yaml
    name: Joke Action
+   run-name: {% raw %}Dad Joke for issue ${{ github.event.issue.number }} by ${{ github.event.comment.user.login }}{% endraw %}
+
    on:
     issue_comment:
       types: [created]
