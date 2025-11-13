@@ -55,3 +55,6 @@ Let's see your Dad Jokes action in action by creating a GitHub Actions workflow 
    git commit -m "Add workflow to test joke action"
    git push
    ```
+
+
+1. With the workflow pushed to GitHub, Mona will check your work and share the next steps.

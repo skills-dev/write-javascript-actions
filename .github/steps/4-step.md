@@ -57,10 +57,12 @@ For JavaScript actions, the `runs` section needs:
      main: dist/index.js
    ```
 
-1. Commit and push:
+1. Commit and push the action metadata file to the `main` branch:
 
    ```sh
    git add action.yml
-   git commit -m "Add action metadata referencing dist/index.js"
+   git commit -m "Add action metadata file"
    git push
    ```
+
+1. With the changes pushed to GitHub, Mona will check your work and share the next steps.

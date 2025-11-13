@@ -40,4 +40,5 @@ Rather than committing your `node_modules` directory (which causes problems with
    git commit -m "Add ncc build script and bundled dist/index.js"
    git push
    ```
+
 1. With the changes pushed to GitHub, Mona will check your work and share the next steps.
