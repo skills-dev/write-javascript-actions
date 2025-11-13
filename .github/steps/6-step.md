@@ -15,7 +15,7 @@ The only thing left to do is test it out!
 
 1. Return to the issue and you should see a new comment posted by `github-actions[bot]` containing a random dad joke!
 
-1. Mona will post the review of the exercise once the workflow completes **successfully**! 
+1. Mona will post the exercise review once your new Dad Joke workflow completes **successfully**! 
 
    <details>
    <summary>Having trouble? 🤷</summary><br/>
