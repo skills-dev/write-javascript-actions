@@ -13,7 +13,7 @@ Every GitHub Action requires a metadata file that defines how the action should 
 The metadata file has specific requirements:
 
 - **Filename**: Must be `action.yml`
-- **Required for**: All actions types - JavaScript, Docker container, and composite actions
+- **Required for**: All actions types - JavaScript, [Docker container](https://docs.github.com/en/actions/tutorials/use-containerized-services/create-a-docker-container-action), and [composite action](https://docs.github.com/en/actions/tutorials/create-actions/create-a-composite-action)
 - **Format**: Written in YAML syntax
 
 #### Core Metadata Parameters
